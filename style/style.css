@@ -1,0 +1,64 @@
+/* joeljamestech */
+body {
+  font-family: "JetBrains Mono", monospace;
+  background-color: #0b0f19;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upload-container {
+  background: #1b2132;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  text-align: center;
+}
+
+input[type="file"] {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  }
