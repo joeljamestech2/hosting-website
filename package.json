@@ -1,0 +1,13 @@
+{
+  "name": "joelhost",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "vercel dev",
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "formidable": "^3.5.2",
+    "cloudinary": "^1.39.0"
+  }
+}

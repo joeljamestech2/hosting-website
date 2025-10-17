@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoelHost - Uploaded Files</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <header>
+    <h1>JoelHost</h1>
+    <p>Uploaded Files</p>
+    <a href="/index.html">Upload New File(s)</a>
+  </header>
+
+  <main>
+    <ul id="fileList"></ul>
+  </main>
+
+  <footer>
+    <p>© 2025 JoelHost | Built by <strong>joeljamestech</strong></p>
+  </footer>
+
+  <script>
+    // joeljamestech - Fetch uploaded files from Cloudinary
+    async function fetchFiles() {
+      const cloudName = "<YOUR_CLOUD_NAME>"; // replace with your Cloudinary cloud name
+      const folder = "joelhost"; 
+      const url = `https://res.cloudinary.com/${cloudName}/image/list/${folder}.json`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log("// joeljamestech - Fetched files:", data.resources);
+
+        const ul = document.getElementById('fileList');
+        if (!data.resources || data.resources.length === 0) {
+          ul.innerHTML = "<li>No files uploaded yet.</li>";
+          return;
+        }
+
+        data.resources.forEach(file => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${file.secure_url}" target="_blank">${file.public_id}</a>`;
+          ul.appendChild(li);
+        });
+      } catch (err) {
+        console.error("// joeljamestech - Fetch files error:", err);
+        document.getElementById('fileList').innerHTML = "<li>Failed to load files.</li>";
+      }
+    }
+
+    fetchFiles();
+  </script>
+</body>
+</html>

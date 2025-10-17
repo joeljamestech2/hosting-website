@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoelHost - Upload Files</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <header>
+    <h1 id="siteName">JoelHost</h1>
+    <p>Upload your files permanently</p>
+  </header>
+
+  <main>
+    <div class="upload-container">
+      <input type="file" id="fileInput" multiple />
+      <button id="uploadBtn">Upload File(s)</button>
+      <p id="status"></p>
+      <a href="/files.html">View Uploaded Files</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 JoelHost | Built by <strong>joeljamestech</strong></p>
+  </footer>
+
+  <script>
+    // joeljamestech - use dynamic SITE_NAME
+    const siteName = "<%= process.env.SITE_NAME %>" || "JoelHost";
+    document.getElementById('siteName').textContent = siteName;
+
+    const API_URL = "/api/upload"; // Relative path works on Vercel
+
+    document.getElementById('uploadBtn').addEventListener('click', async () => {
+      const files = document.getElementById('fileInput').files;
+      if (!files.length) return alert("Select at least one file!");
+
+      const formData = new FormData();
+      for (const file of files) {
+        formData.append('files[]', file);
+      }
+
+      document.getElementById('status').textContent = "Uploading...";
+
+      try {
+        const res = await fetch(API_URL, { method: 'POST', body: formData });
+        const data = await res.json();
+        console.log("// joeljamestech - Upload response:", data);
+
+        document.getElementById('status').innerHTML = "";
+        if (data.urls && data.urls.length) {
+          data.urls.forEach(url => {
+            document.getElementById('status').innerHTML += `✅ <a href="${url}" target="_blank">${url}</a><br>`;
+          });
+        } else {
+          document.getElementById('status').textContent = "❌ Upload failed.";
+        }
+      } catch (err) {
+        console.error("// joeljamestech - Upload error:", err);
+        document.getElementById('status').textContent = "⚠️ Error uploading file(s).";
+      }
+    });
+  </script>
+</body>
+</html>
