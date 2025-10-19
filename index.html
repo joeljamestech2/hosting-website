@@ -2,117 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JoelHost | Upload Files</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Bots</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'JetBrains Mono', monospace;
       margin: 0;
-      background-color: #0b0f19;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 1rem;
-    }
-    h1 { 
-      text-align: center; 
-      margin-bottom: 1rem; 
-      color: #007aff; 
-    }
-    .upload-container {
-      width: 100%;
-      max-width: 500px;
-      background: #1b2132;
-      border-radius: 10px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    input[type="file"] {
-      padding: 8px;
-      border-radius: 10px;
-      border: none;
-      background: #2b2f3b;
-      color: #fff;
-    }
-    button {
-      background-color: #007aff;
+      font-family: 'JetBrains Mono', monospace;
+      background-color: #0d0f12;
       color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
+      text-align: center;
+      padding: 60px 20px;
+      overflow-x: hidden;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid #1de9b6;
+      border-radius: 25px;
+      color: #1de9b6;
       font-size: 14px;
-      transition: 0.2s;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
     }
-    button:hover { background-color: #005ecb; }
-    #status {
-      background: #141a27;
-      padding: 1rem;
-      border-radius: 10px;
-      min-height: 50px;
-      overflow-x: auto;
+
+    h1 {
+      margin-top: 20px;
+      font-size: 38px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
     }
-    a { color: #00d4ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    .bots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 50px;
+      margin-top: 70px;
+      justify-items: center;
+    }
+
+    .bot {
+      text-align: center;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .bot:nth-child(1) { animation-delay: 0.3s; }
+    .bot:nth-child(2) { animation-delay: 0.5s; }
+    .bot:nth-child(3) { animation-delay: 0.7s; }
+    .bot:nth-child(4) { animation-delay: 0.9s; }
+
+    .bot img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+    }
+
+    .bot:hover img {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 15px #1de9b6);
+    }
+
+    .bot h2 {
+      margin-top: 12px;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    @keyframes fadeUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 32px; }
+      .bot img { width: 120px; height: 120px; }
+      .bot h2 { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
-  <h1 id="siteName">YourSiteName</h1>
+  <div class="tag">BOTS</div>
+  <h1>Our Bots</h1>
 
-  <div class="upload-container">
-    <input type="file" id="fileInput" multiple />
-    <button id="uploadBtn">Upload File(s)</button>
-    <p id="status"></p>
+  <div class="bots">
+    <div class="bot" onclick="window.open('#', '_blank')">
+      <img src="https://i.imgur.com/8Km9tLL.png" alt="Rimuru">
+      <h2>RIMURU</h2>
+    </div>
+
+    <div class="bot" onclick="window.open('#', '_blank')">
+      <img src="https://i.imgur.com/7b0b3bG.png" alt="Rem">
+      <h2>REM</h2>
+    </div>
+
+    <div class="bot" onclick="window.open('#', '_blank')">
+      <img src="https://i.imgur.com/3GvwNBf.png" alt="Elaina">
+      <h2>ELAINA</h2>
+    </div>
+
+    <div class="bot" onclick="window.open('#', '_blank')">
+      <img src="https://i.imgur.com/k7XV1Qp.png" alt="Priest">
+      <h2>PRIEST</h2>
+    </div>
   </div>
-
-  <footer style="margin-top: auto; opacity: 0.8; margin-bottom:1rem;">
-    © 2025 JoelHost | Built by <strong>joeljamestech</strong>
-  </footer>
-
-  <script>
-    // joeljamestech - dynamic site name placeholder
-    const siteName = "<%= process.env.SITE_NAME %>" || "YourSiteName";
-    document.getElementById('siteName').textContent = siteName;
-
-    const API_URL = "/api/upload"; // Backend endpoint on Vercel
-
-    document.getElementById('uploadBtn').addEventListener('click', async () => {
-      const files = document.getElementById('fileInput').files;
-      if (!files.length) return alert("Select at least one file!");
-
-      const formData = new FormData();
-      for (const file of files) {
-        formData.append('files[]', file);
-      }
-
-      const statusEl = document.getElementById('status');
-      statusEl.textContent = "Uploading...";
-
-      try {
-        const res = await fetch(API_URL, { method: 'POST', body: formData });
-        const data = await res.json();
-        console.log("// joeljamestech - Upload response:", data);
-
-        statusEl.innerHTML = "";
-        if (data.urls && data.urls.length) {
-          data.urls.forEach(url => {
-            statusEl.innerHTML += `✅ <a href="${url}" target="_blank">${url}</a><br>`;
-          });
-        } else {
-          statusEl.textContent = "❌ Upload failed.";
-        }
-      } catch (err) {
-        console.error("// joeljamestech - Upload error:", err);
-        statusEl.textContent = "⚠️ Error uploading file(s).";
-      }
-    });
-  </script>
 </body>
 </html>
