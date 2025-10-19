@@ -3,19 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Bots</title>
+  <title>Tensura Community | Our Bots</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'JetBrains Mono', monospace;
       background-color: #0d0f12;
       color: white;
       text-align: center;
-      padding: 60px 20px;
       overflow-x: hidden;
     }
 
+    /* HERO SECTION */
+    header {
+      background: url('https://i.pinimg.com/736x/ee/bf/24/eebf2495fae3f28e9cc158c1f5e32acb.jpg') no-repeat center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      z-index: 1;
+      animation: fadeUp 1s ease;
+    }
+
+    .btn {
+      z-index: 1;
+      margin-top: 1rem;
+      background-color: #1de9b6;
+      color: #000;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .btn:hover {
+      background-color: #37dcb8;
+      transform: scale(1.05);
+    }
+
+    /* STATS SECTION */
+    .stats {
+      background-color: #12151c;
+      padding: 3rem 1rem;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .stats h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      justify-items: center;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      background-color: #1c1f26;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 120px;
+      transition: 0.3s;
+    }
+
+    .stat-box:hover {
+      background-color: #242832;
+      transform: translateY(-5px);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      color: #1de9b6;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #a0a0a0;
+    }
+
+    /* OUR BOTS SECTION */
     .tag {
       display: inline-block;
       padding: 8px 16px;
@@ -25,24 +127,23 @@
       font-size: 14px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0;
+      margin-top: 80px;
       animation: fadeUp 1s ease forwards;
     }
 
-    h1 {
+    .bots-title {
       margin-top: 20px;
       font-size: 38px;
-      opacity: 0;
       animation: fadeUp 1s ease 0.3s forwards;
     }
 
-    /* 2x2 Grid Layout */
     .bots {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 60px 40px;
       margin-top: 70px;
       justify-items: center;
+      padding-bottom: 100px;
     }
 
     .bot {
@@ -85,15 +186,16 @@
       text-shadow: 0 0 10px #1de9b6;
     }
 
+    footer {
+      background-color: #0b0b0e;
+      color: #aaa;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
     @keyframes fadeUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @media (max-width: 600px) {
@@ -101,15 +203,46 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px 20px;
       }
-      h1 { font-size: 32px; }
       .bot img { width: 130px; height: 130px; }
       .bot h2 { font-size: 18px; }
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>Welcome To<br>Tensura Community</h1>
+    <button class="btn" onclick="window.open('#', '_blank')">JOIN TENSURA</button>
+  </header>
+
+  <section class="stats">
+    <h2>Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-icon">👥</div>
+        <div class="stat-number">38547</div>
+        <div class="stat-label">Users</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon">💬</div>
+        <div class="stat-number">125</div>
+        <div class="stat-label">Groups</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon">🌎</div>
+        <div class="stat-number">42</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Active</div>
+      </div>
+    </div>
+  </section>
+
   <div class="tag">BOTS</div>
-  <h1>Our Bots</h1>
+  <h1 class="bots-title">Our Bots</h1>
 
   <div class="bots">
     <div class="bot" onclick="window.open('#', '_blank')">
@@ -132,5 +265,10 @@
       <h2>PRIEST</h2>
     </div>
   </div>
+
+  <footer>
+    © 2025 Tensura Community | Powered by rimuruslime.com
+  </footer>
+
 </body>
 </html>
